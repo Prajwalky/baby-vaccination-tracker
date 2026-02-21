@@ -107,99 +107,123 @@ user_problem_statement: Baby Vaccination Tracker mobile app with push notificati
 backend:
   - task: "Create baby profile API endpoint"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Created POST /api/baby endpoint to create baby profile with name, dob, photo (base64), gender, blood_group. Auto-generates vaccination schedule based on DOB."
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: POST /api/baby successfully creates baby profile with all required fields (id, name, dob, gender, blood_group, created_at). Auto-generates 31 India vaccination schedule entries. Correctly prevents duplicate baby creation (returns 400 error)."
   
   - task: "Get baby profile API endpoint"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Created GET /api/baby endpoint to fetch existing baby profile. Returns null if no profile exists."
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: GET /api/baby successfully retrieves baby profile with correct data matching creation. Returns proper JSON structure with all fields."
   
   - task: "Update baby profile API endpoint"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "medium"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Created PUT /api/baby/{baby_id} endpoint to update baby profile details."
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: PUT /api/baby/{baby_id} successfully updates baby profile fields (tested name update from 'Test Baby' to 'Updated Baby Name'). Returns updated profile data."
   
   - task: "Get vaccinations API endpoint"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Created GET /api/vaccinations/{baby_id} endpoint to fetch all vaccinations for a baby, sorted by due date."
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: GET /api/vaccinations/{baby_id} returns 31 vaccinations correctly sorted by due_date. Each vaccination has proper structure (id, baby_id, name, description, due_date, age_weeks, completed). Verified India schedule from BCG at birth to Typhoid at 2 years."
   
   - task: "Update vaccination status API endpoint"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Created PATCH /api/vaccinations/{vaccination_id} endpoint to mark vaccinations as complete/incomplete with notes."
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: PATCH /api/vaccinations/{vaccination_id} successfully updates vaccination status. Tested marking BCG as complete with notes. Correctly handles non-existent vaccination IDs (returns 404 error)."
   
   - task: "Get upcoming vaccinations API endpoint"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "medium"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Created GET /api/vaccinations/{baby_id}/upcoming endpoint to fetch only non-completed vaccinations."
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: GET /api/vaccinations/{baby_id}/upcoming correctly returns only non-completed vaccinations (initially 31, then 30 after marking one complete). Filters correctly based on completed status."
   
   - task: "Get completed vaccinations API endpoint"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "medium"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Created GET /api/vaccinations/{baby_id}/completed endpoint to fetch only completed vaccinations."
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: GET /api/vaccinations/{baby_id}/completed correctly returns only completed vaccinations. Verified that previously completed vaccination appears in this list with proper completed status and notes."
   
   - task: "India vaccination schedule generation"
     implemented: true
-    working: "NA"
+    working: true
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: "NA"
         agent: "main"
         comment: "Implemented India vaccination schedule (IAP 2023) with 39 vaccinations from birth to 2 years. Auto-generates schedule when baby profile is created."
+      - working: true
+        agent: "testing"
+        comment: "✅ TESTED: India vaccination schedule correctly generates 31 vaccinations (not 39 as initially stated). Schedule follows IAP 2023 guidelines: Birth doses (BCG, OPV-0, Hep B-1), 6-week series (DTP, IPV, Hib, Hep B, Rotavirus, PCV), boosters, and final Typhoid at 2 years. Due dates calculated correctly based on baby's DOB."
 
 frontend:
   - task: "Baby profile creation/edit screen"
