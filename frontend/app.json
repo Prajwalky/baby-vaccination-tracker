@@ -17,9 +17,10 @@
       }
     },
     "android": {
+      "package": "com.babyvaccinationtracker.app",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#000"
+        "backgroundColor": "#6C63FF"
       },
       "edgeToEdgeEnabled": true,
       "permissions": [
