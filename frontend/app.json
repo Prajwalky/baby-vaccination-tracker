@@ -5,11 +5,12 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "frontend",
+    "scheme": "babyvaccination",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
+      "bundleIdentifier": "com.babyvaccinationtracker.app",
       "infoPlist": {
         "NSCameraUsageDescription": "Take baby photos for profile",
         "NSPhotoLibraryUsageDescription": "Select baby photos from gallery",
@@ -22,7 +23,6 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#6C63FF"
       },
-      "edgeToEdgeEnabled": true,
       "permissions": [
         "CAMERA",
         "READ_EXTERNAL_STORAGE",
@@ -50,9 +50,6 @@
     ],
     "experiments": {
       "typedRoutes": true
-    },
-    "extra": {
-      "router": {}
     }
   }
 }
